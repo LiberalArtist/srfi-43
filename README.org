@@ -6,6 +6,8 @@
 
 keywords: [[https://srfi.schemers.org/?keywords=data-structure][Data Structure]]
 
+library-name: vectors
+
 This repository hosts [[https://srfi.schemers.org/srfi-43/][SRFI 43]]: Vector library, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
 This SRFI is in /final/ status.
