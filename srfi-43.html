@@ -1,36 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
   <head>
     <!-- Non-indentation necessary for the commit check junk. -->
     <title>SRFI 43: Vector Library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/srfi.css" type="text/css" />
-    <meta http-equiv="Content-type"
-          content="text/html; charset=iso-8859-1">
+    <link rel="stylesheet" href="https://srfi.schemers.org/srfi.css" type="text/css" />
+    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png">
+    <meta charset="utf-8" />
     <style type="text/css">
       /* <![CDATA[ */
-      body {
-        padding-right: 5%;
-      }
-
-      h2 {
-        padding-left: 6%;
-      }
-
-      /* Ugly hack to make the header work right */
-      h1.nonheader {
-        padding-left: 8.5%;
-      }
-
-      h1 {
-        margin-left: -4.5%;
-      }
-
-      div.header {
-        padding-left: 8%;
-      }
-
       p, dl, code.indented {
         padding-left: 8%;
       }
@@ -83,18 +62,11 @@
   </head>
   <body>
 
-    <div class="header">
-<!--
-     Special SRFI header, formatted oddly due to the commit check script
-     for SRFI CVS.
-  -->
-<H1>Title</H1>
-Vector library
+<h1><a href="https://srfi.schemers.org/"><img class="srfi-logo" src="https://srfi.schemers.org/srfi-logo.svg" alt="SRFI surfboard logo" /></a>43: Vector library</h1>
 
-<H1>Author</H1>
-Taylor Campbell
+<p>by Taylor Campbell</p>
 
-<H1>Status</H1>
+<h2>Status</h2>
 
 <p>This SRFI is currently in <em>final</em> status.  Here is <a href="https://srfi.schemers.org/srfi-process.html">an explanation</a> of each status that a SRFI can hold.  To provide input on this SRFI, please send email to <code><a href="mailto:srfi+minus+43+at+srfi+dotschemers+dot+org">srfi-43@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To subscribe to the list, follow <a href="https://srfi.schemers.org/srfi-list-subscribe.html">these instructions</a>.  You can access previous messages via the mailing list <a href="https://srfi-email.schemers.org/srfi-43">archive</a>.</p>
 <UL>
@@ -107,12 +79,8 @@ Taylor Campbell
 <LI>Revised: 2004-08-30
 <LI>Final:   2004-10-26
 </UL>
-<!--
-     End special header.
-  -->
-    </div>
 
-    <h1 class="nonheader">Table of Contents</h1>
+    <h2 class="nonheader">Table of Contents</h2>
     <ul class="outer">
       <li>1. <a href="#Abstract">Abstract</a></li>
       <li>2. <a href="#Rationale">Rationale</a></li>
@@ -135,7 +103,7 @@ Taylor Campbell
       <li>8. <a href="#Copyright">Copyright</a></li>
     </ul>
 
-    <h1 class="nonheader"><a name="Abstract">1. Abstract</a></h1>
+    <h2 class="nonheader"><a name="Abstract">1. Abstract</a></h2>
     <p>
       This <a href="#SRFI">SRFI</a> proposes a comprehensive and
       complete library of vector operations accompanied by a freely
@@ -155,7 +123,7 @@ Taylor Campbell
       structure / package / library / unit called <tt>vector-lib</tt>.
     </p>
 
-    <h1 class="nonheader"><a name="Rationale">2. Rationale</a></h1>
+    <h2 class="nonheader"><a name="Rationale">2. Rationale</a></h2>
     <p>
       <a href="#R5RS">R5RS</a> provides very few list-processing
       procedures, for which reason <a href="#SRFI-1">SRFI 1
@@ -196,9 +164,9 @@ Taylor Campbell
       includes routines for sorting not only vectors but also lists.
     </p>
 
-    <h1 class="nonheader">
+    <h2 class="nonheader">
       <a name="ProcIndex">3. Procedure Index</a>
-    </h1>
+    </h2>
     <p>
       Here is an index of the procedures provided by this package.
       Those marked by <b>bold</b> are provided in
@@ -342,7 +310,7 @@ Taylor Campbell
       </dd>
     </dl>
 
-    <h1 class="nonheader"><a name="Procs">4. Procedures</a></h1>
+    <h2 class="nonheader"><a name="Procs">4. Procedures</a></h2>
     <p>
       In this section containing specifications of procedures, the
       following notation is used to specify parameters and return
@@ -482,7 +450,7 @@ Taylor Campbell
       automatically returns <tt>#f</tt> if the vectors' lengths vary.
     <p>
 
-    <h2><a name="Constructors">4.1. Constructors</a></h2>
+    <h3 id="Constructors">4.1. Constructors</h3>
     <dl>
       <dt class="proc-spec">
         <a name="make-vector">
@@ -849,7 +817,7 @@ Taylor Campbell
       </dd>
     </dl>
 
-    <h2><a name="Predicates">4.2. Predicates</a></h2>
+    <h3 id="Predicates">4.2. Predicates</h3>
     <dl>
       <dt class="proc-spec">
         <a name="vector-p">
@@ -1082,7 +1050,7 @@ Taylor Campbell
       </dd>
     </dl>
 
-    <h2><a name="Selectors">4.3. Selectors</a></h2>
+    <h3 id="Selectors">4.3. Selectors</h3>
     <dl>
       <dt class="proc-spec">
         <a name="vector-ref">
@@ -1143,7 +1111,7 @@ Taylor Campbell
       </dd>
     </dl>
 
-    <h2><a name="Iteration">4.4. Iteration</a></h2>
+    <h3 id="Iteration">4.4. Iteration</h3>
     <dl>
       <dt class="proc-spec">
         <a name="vector-fold">
@@ -1455,7 +1423,7 @@ zot</pre>
       </dd>
     </dl>
 
-    <h2><a name="Searching">4.5. Searching</a></h2>
+    <h3 id="Searching">4.5. Searching</h3>
     <dl>
       <dt class="proc-spec">
         <a name="vector-index">
@@ -1682,7 +1650,7 @@ zot</pre>
       </dd>
     </dl>
 
-    <h2><a name="Mutators">4.6. Mutators</a></h2>
+    <h3 id="Mutators">4.6. Mutators</h3>
     <dl>
       <dt class="proc-spec">
         <a name="vector-set-bang">
@@ -1790,7 +1758,7 @@ zot</pre>
       </dd>
     </dl>
 
-    <h2><a name="Conversion">4.7. Conversion</a></h2>
+    <h3 id="Conversion">4.7. Conversion</h3>
     <dl>
       <dt class="proc-spec">
         <a name="vector-to-list">
@@ -1847,9 +1815,9 @@ zot</pre>
       </dd>
     </dl>
 
-    <h1 class="nonheader">
+    <h2 class="nonheader">
       <a name="RefImpl">5. Reference Implementation</a>
-    </h1>
+    </h2>
     <p>
       With this SRFI comes a complete reference implementation.  It is
       licensed under a very open copyright with which no implementors
@@ -1864,9 +1832,9 @@ zot</pre>
       this SRFI can be found <a href="vector-lib.scm">here</a>.
     </p>
 
-    <h1 class="nonheader">
+    <h2 class="nonheader">
       <a name="Acknowledgements">6. Acknowledgements</a>
-    </h1>
+    </h2>
     <p>
       Thanks to Olin Shivers for his wonderfully complete
       <a href="#SRFI-1">list</a> and <a href="#SRFI-13">string</a>
@@ -1884,7 +1852,7 @@ zot</pre>
       attention to the SRFI.
     </p>
 
-    <h1 class="nonheader"><a name="References">7. References</a></h1>
+    <h2 class="nonheader"><a name="References">7. References</a></h2>
     <dl>
       <dt class="ref"><a name="R5RS">R5RS</a></dt>
       <dd>
@@ -1979,7 +1947,7 @@ zot</pre>
       </dd>
     </dl>
 
-    <h1 class="nonheader"><a name="Copyright">8. Copyright</a></h1>
+    <h2 class="nonheader"><a name="Copyright">8. Copyright</a></h2>
     <p>
      Copyright (C) Taylor Campbell (2003).  All rights reserved.
     </p>
