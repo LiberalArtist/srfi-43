@@ -1,12 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
     <!-- Non-indentation necessary for the commit check junk. -->
     <title>SRFI 43: Vector Library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://srfi.schemers.org/srfi.css" type="text/css" />
-    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png">
+    <link href="/favicon.png" rel="icon" sizes="192x192" type="image/png" />
     <meta charset="utf-8" />
     <style type="text/css">
       /* <![CDATA[ */
@@ -69,16 +68,16 @@
 <h2>Status</h2>
 
 <p>This SRFI is currently in <em>final</em> status.  Here is <a href="https://srfi.schemers.org/srfi-process.html">an explanation</a> of each status that a SRFI can hold.  To provide input on this SRFI, please send email to <code><a href="mailto:srfi+minus+43+at+srfi+dotschemers+dot+org">srfi-43@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To subscribe to the list, follow <a href="https://srfi.schemers.org/srfi-list-subscribe.html">these instructions</a>.  You can access previous messages via the mailing list <a href="https://srfi-email.schemers.org/srfi-43">archive</a>.</p>
-<UL>
-<LI>Received: 2003-03-26
-<LI>Draft: 2003-04-03--2003-06-01
-<LI>Revised: 2003-07-15
-<LI>Revised: 2003-11-01
-<LI>Revised: 2004-04-10
-<LI>Revised: 2004-04-28
-<LI>Revised: 2004-08-30
-<LI>Final:   2004-10-26
-</UL>
+<ul>
+<li>Received: 2003-03-26
+</li><li>Draft: 2003-04-03--2003-06-01
+</li><li>Revised: 2003-07-15
+</li><li>Revised: 2003-11-01
+</li><li>Revised: 2004-04-10
+</li><li>Revised: 2004-04-28
+</li><li>Revised: 2004-08-30
+</li><li>Final:   2004-10-26
+</li></ul>
 
     <h2 class="nonheader">Table of Contents</h2>
     <ul class="outer">
@@ -177,133 +176,133 @@
     <dl>
       <dt class="proc-index">
         &middot;&nbsp;<a href="#Constructors">Constructors</a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dt>
       <dd>
         <code>
           <b><a href="#make-vector">make-vector</a></b>
           <b><a href="#vector">vector</a></b>
-          <br>
+          <br />
           <a href="#vector-unfold">vector-unfold</a>
           <a href="#vector-unfold-right">vector-unfold-right</a>
-          <br>
+          <br />
           <a href="#vector-copy">vector-copy</a>
           <a href="#vector-reverse-copy">vector-reverse-copy</a>
-          <br>
+          <br />
           <a href="#vector-append">vector-append</a>
           <a href="#vector-concatenate">vector-concatenate</a>
-          <br>
-          <br>
+          <br />
+          <br />
         </code>
       </dd>
 
       <dt class="proc-index">
         &middot;&nbsp;<a href="#Predicates">Predicates</a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dt>
       <dd>
         <code>
           <b><a href="#vector-p">vector?</a></b>
-          <br>
+          <br />
           <a href="#vector-empty-p">vector-empty?</a>
-          <br>
+          <br />
           <a href="#vector-eq">vector=</a>
-          <br>
-          <br>
+          <br />
+          <br />
         </code>
       </dd>
 
       <dt class="proc-index">
         &middot;&nbsp;<a href="#Selectors">Selectors</a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dt>
       <dd>
         <code>
           <b><a href="#vector-ref">vector-ref</a></b>
-          <br>
+          <br />
           <b><a href="#vector-length">vector-length</a></b>
-          <br>
-          <br>
+          <br />
+          <br />
         </code>
       </dd>
 
       <dt class="proc-index">
         &middot;&nbsp;<a href="#Iteration">Iteration</a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dt>
       <dd>
         <code>
           <a href="#vector-fold">vector-fold</a>
           <a href="#vector-fold-right">vector-fold-right</a>
-          <br>
+          <br />
           <a href="#vector-map">vector-map</a>
           <a href="#vector-map-bang">vector-map!</a>
-          <br>
+          <br />
           <a href="#vector-for-each">vector-for-each</a>
-          <br>
+          <br />
           <a href="#vector-count">vector-count</a>
-          <br>
-          <br>
+          <br />
+          <br />
         </code>
       </dd>
 
       <dt class="proc-index">
         &middot;&nbsp;<a href="#Searching">Searching</a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dt>
       <dd>
         <code>
           <a href="#vector-index">vector-index</a>
           <a href="#vector-index-right">vector-index-right</a>
-          <br>
+          <br />
           <a href="#vector-skip">vector-skip</a>
           <a href="#vector-skip-right">vector-skip-right</a>
-          <br>
+          <br />
           <a href="#vector-binary-search">vector-binary-search</a>
-          <br>
+          <br />
           <a href="#vector-any">vector-any</a>
           <a href="#vector-every">vector-every</a>
-          <br>
-          <br>
+          <br />
+          <br />
         </code>
       </dd>
 
       <dt class="proc-index">
         &middot;&nbsp;<a href="#Mutators">Mutators</a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dt>
       <dd>
         <code>
           <b><a href="#vector-set-bang">vector-set!</a></b>
           <a href="#vector-swap-bang">vector-swap!</a>
-          <br>
+          <br />
           <b><i><a href="#vector-fill-bang">vector-fill!</a></i></b>
-          <br>
+          <br />
           <a href="#vector-reverse-bang">vector-reverse!</a>
-          <br>
+          <br />
           <a href="#vector-copy-bang">vector-copy!</a>
           <a href="#vector-reverse-copy-bang">vector-reverse-copy!</a>
-          <br>
-          <br>
+          <br />
+          <br />
         </code>
       </dd>
 
       <dt class="proc-index">
         &middot;&nbsp;<a href="#Conversion">Conversion</a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dt>
       <dd>
         <code>
           <b><i><a href="#vector-to-list">vector-&gt;list</a></i></b>
           <a href="#reverse-vector-to-list">reverse-vector-&gt;list</a>
-          <br>
+          <br />
           <b><i><a href="#list-to-vector">list-&gt;vector</a></i></b>
           <a href="#reverse-list-to-vector">reverse-list-&gt;vector</a>
         </code>
@@ -329,8 +328,8 @@
         implementation-dependant; this SRFI does not specify what it
         returns, and in order to write portable code, the return value
         should be ignored.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">vec</dt>
@@ -338,8 +337,8 @@
         The argument in this place must be a vector, i.e. it must
         satisfy the predicate
         <tt><a href="#vector-p">vector?</a></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">i, j, start, size</dt>
@@ -349,8 +348,8 @@
         <tt>zero?</tt> or <tt>positive?</tt>.  The third case of it
         indicates the index at which traversal begins; the fourth case
         of it indicates the size of a vector.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">end</dt>
@@ -361,16 +360,16 @@
         which traversal will stop &mdash; processing will occur until
         the the index of the vector is <tt><i>end</i></tt>.  It is the
         closed right side of a range.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">f</dt>
       <dd>
         The argument in this place must be a function of one or more
         arguments, returning exactly one value.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">pred?</dt>
@@ -378,8 +377,8 @@
         The argument in this place must be a function of one or more
         arguments that returns one value, which is treated as a
         boolean.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">
@@ -387,8 +386,8 @@
       </dt>
       <dd>
         The argument in this place may be any Scheme value.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">[something]</dt>
@@ -397,24 +396,24 @@
         argument; it needn't necessarily be applied.
         <tt><i>Something</i></tt> needn't necessarily be one thing; for
         example, this usage of it is perfectly valid:
-        <br>
-        <br>
+        <br />
+        <br />
         <code>
           &nbsp;&nbsp;&nbsp;[start [end]]
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         and is indeed used quite often.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">something &middot;&middot;&middot;</dt>
       <dd>
         Indicates that zero or more <tt><i>something</i></tt>s are
         allowed to be arguments.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">
@@ -424,8 +423,8 @@
       <dd>
         Indicates that at least one <tt><i>something</i></tt> must be
         arguments.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="type-spec">
@@ -437,8 +436,8 @@
         Exactly equivalent to the previous argument notation, but this
         also indicates that <tt><i>n</i></tt> will be used later in the
         procedure description.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -448,7 +447,7 @@
       result when the end of the shortest vector is reached.  The sole
       exception is <tt><a href="#vector-eq">vector=</a></tt>, which
       automatically returns <tt>#f</tt> if the vectors' lengths vary.
-    <p>
+    </p>
 
     <h3 id="Constructors">4.1. Constructors</h3>
     <dl>
@@ -463,20 +462,20 @@
         of size <tt><i>size</i></tt>, optionally filling it with
         <tt><i>fill</i></tt>.  The default value of
         <tt><i>fill</i></tt> is unspecified.
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (make-vector 5 3)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(3 3 3 3 3)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -488,20 +487,20 @@
       <dd>
         [<a href="#R5RS"><i>R5RS</i></a>] Creates and returns a vector
         whose elements are <tt><i>x &middot;&middot;&middot;</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector 0 1 2 3 4)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(0 1 2 3 4)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -522,46 +521,46 @@
         vector and <tt><i>n</i></tt> new seeds for the next iteration.
         It is an error for the number of seeds to vary between
         iterations.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-unfold (&lambda; (i x) (values x (- x 1)))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          (vector-unfold (λ (i x) (values x (- x 1)))
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          10 0)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(0 -1 -2 -3 -4 -5 -6 -7 -8 -8)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         Construct a vector of the sequence of integers in the range
         [0,<tt><i>n</i></tt>).
-        <br>
+        <br />
         <code class="example-call">
           (vector-unfold values <tt><i>n</i></tt>)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(0 1 2 &middot;&middot;&middot; <i>n-2</i> <i>n-1</i>)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         Copy <tt><i>vector</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-unfold (&lambda; (i) (vector-ref <i>vector</i> i))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          (vector-unfold (λ (i) (vector-ref <i>vector</i> i))
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          (vector-length <i>vector</i>))
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -575,40 +574,40 @@
         Like <tt><a href="#vector-unfold">vector-unfold</a></tt>, but
         it uses <tt><i>f</i></tt> to generate elements from
         right-to-left, rather than left-to-right.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         Construct a vector in reverse of the integers in the range
         [0,<tt><i>n</i></tt>).
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-unfold-right (&lambda; (i x) (values x (+ x 1))) <i>n</i> 0)
+          (vector-unfold-right (λ (i x) (values x (+ x 1))) <i>n</i> 0)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(<i>n-1</i> <i>n-2</i> &middot;&middot;&middot; 2 1 0)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         Reverse <tt><i>vector</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-unfold-right (&lambda; (i x)
+          (vector-unfold-right (λ (i x)
                                  (values (vector-ref <i>vector</i> x)
                                          (+ x 1)))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                (vector-length <i>vector</i>)
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                0)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
 <!-- VECTOR-TABULATE has been flushed in favour of VECTOR-UNFOLD.
@@ -622,29 +621,29 @@
         Creates a new vector whose size is <tt><i>size</i></tt> and
         fills it by applying <tt><i>f</i></tt> to each index in the
         vector, in an unspecified order.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-tabulate - 5)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(0 -1 -2 -3 -4)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-tabulate (&lambda; (x) (* x x)) 5)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(0 1 4 9 16)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 -->
 
@@ -668,47 +667,47 @@
         obviously cannot be filled by elements from <tt><i>vec</i></tt>
         are filled with <tt><i>fill</i></tt>, whose default value is
         unspecified.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-copy '#(a b c d e f g h i))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(a b c d e f g h i)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-copy '#(a b c d e f g h i) 6)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(g h i)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-copy '#(a b c d e f g h i) 3 6)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(d e f)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-copy '#(a b c d e f g h i) 6 12 'x)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(g h i x x x)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -722,20 +721,20 @@
         Like <tt><a href="#vector-copy">vector-copy</a></tt>, but it
         copies the elements in the reverse order from
         <tt><i>vec</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-reverse-copy '#(5 4 3 2 1 0) 1 5)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(1 2 3 4)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -748,38 +747,38 @@
         Returns a newly allocated vector that contains all elements in
         order from the subsequent locations in <tt><i>vec
         &middot;&middot;&middot;</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-append '#(x) '#(y))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(x y)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-append '#(a) '#(b c d))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(a b c d)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-append '#(a #(b)) '#(#(c)))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(a #(b) #(c))
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -791,29 +790,29 @@
       <dd>
         Appends each vector in <tt><i>list-of-vectors</i></tt>.  This
         is equivalent to:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="indented">
           (apply <a href="#vector-append">vector-append</a>
                  <i>list-of-vectors</i>)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         However, it may be implemented better.
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-concatenate '(#(a b) #(c d)))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(a b c d)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -829,56 +828,56 @@
         [<a href="#R5RS"><i>R5RS</i></a>] Disjoint type predicate for
         vectors: this returns <tt>#t</tt> if <tt><i>x</i></tt> is a
         vector, and <tt>#f</tt> if otherwise.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector? '#(a b c))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector? '(a b c))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector? #t)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector? '#())
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector? '())
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -890,47 +889,47 @@
       <dd>
         Returns <tt>#t</tt> if <tt><i>vec</i></tt> is empty, i.e. its
         length is <tt>0</tt>, and <tt>#f</tt> if not.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-empty? '#(a))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-empty? '#(()))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-empty? '#(#()))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-empty? '#())
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -956,97 +955,97 @@
         (The reference implementation does, but it does not consider
         the situation where <tt><i>elt=?</i></tt> is in fact itself
         <tt>eq?</tt> to avoid yet more unnecessary comparisons.)
-        <br>
-        <br>
+        <br />
+        <br />
         If there are only zero or one vector arguments, <tt>#t</tt> is
         automatically returned.  The dynamic order in which comparisons
         of elements and of vectors are performed is left completely
         unspecified; do not rely on a particular order.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= eq? '#(a b c d) '#(a b c d))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= eq? '#(a b c d) '#(a b d c))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= = '#(1 2 3 4 5) '#(1 2 3 4))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= = '#(1 2 3 4) '#(1 2 3 4))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         The two trivial cases.
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= eq?)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= eq? '#(a))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         Note the fact that we don't use vector literals in the next two
         &mdash; it is unspecified whether or not literal vectors with
         the same external representation are <tt>eq?</tt>.
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= eq? (vector (vector 'a)) (vector (vector 'a)))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector= equal? (vector (vector 'a)) (vector (vector 'a)))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #t
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -1065,20 +1064,20 @@
         on zero.  <tt><i>I</i></tt> must be within the range [0,
         <tt>(<a href="#vector-length">vector-length</a>
              <i>vec</i>)</tt>).
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-ref '#(a b c d) 2)
         </code>
-        <br>
+        <br />
         <code class="example-value">
           c
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1094,20 +1093,20 @@
         <tt><i>vec</i></tt> refers to a larger vector that contains
         more locations that are unreachable from <tt><i>vec</i></tt>.
         This SRFI does not define vector slices, but later SRFIs may.)
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-length '#(a b c))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           3
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -1137,50 +1136,50 @@
         becomes whatever <tt><i>kons</i></tt> returned at the
         respective iteration &mdash;, and <tt><i>i</i></tt> is the
         current index.
-        <br>
-        <br>
+        <br />
+        <br />
         The iteration is strictly left-to-right.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         Find the longest string's length in
         <tt><i>vector-of-strings</i></tt>.
-        <br>
+        <br />
         <code class="example-call">
-          (vector-fold (&lambda; (index len str)
+          (vector-fold (λ (index len str)
                          (max (string-length str) len))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;
                        0 <i>vector-of-strings</i>)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         Produce a list of the reversed elements of
         <tt><i>vec</i></tt>.
-        <br>
+        <br />
         <code class="example-call">
-          (vector-fold (&lambda; (index tail elt) (cons elt tail))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          (vector-fold (λ (index tail elt) (cons elt tail))
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;
                        '() <i>vec</i>)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         Count the number of even numbers in <tt><i>vec</i></tt>.
-        <br>
+        <br />
         <code class="example-call">
-          (vector-fold (&lambda; (index counter n)
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          (vector-fold (λ (index counter n)
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          (if (even? n) (+ counter 1) counter))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;
                        0 <i>vec</i>)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1194,26 +1193,26 @@
       <dd>
         Similar to <tt><a href="#vector-fold">vector-fold</a></tt>, but
         it iterates right to left instead of left to right.
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         Convert a vector to a list.
-        <br>
+        <br />
         <code class="example-call">
-          (vector-fold-right (&lambda; (index tail elt)
+          (vector-fold-right (λ (index tail elt)
                                (cons elt tail))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              '() '#(a b c d))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           (a b c d)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1237,83 +1236,83 @@
              &middot;&middot;&middot;)</tt>.
         The dynamic order of application of <tt><i>f</i></tt> is
         unspecified.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-map (&lambda; (i x) (* x x))
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          (vector-map (λ (i x) (* x x))
+          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;
                       (<a href="#vector-unfold">vector-unfold</a>
-                       (&lambda; (i x) (values x (+ x 1)))
+                       (λ (i x) (values x (+ x 1)))
                        4 1))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(1 4 9 16)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-map (&lambda; (i x y) (* x y))<br>
+          (vector-map (λ (i x y) (* x y))<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;(<a href="#vector-unfold">vector-unfold</a>
-                             (&lambda; (i x) (values x (+ x 1)))
-                             5 1)<br>
+                             (λ (i x) (values x (+ x 1)))
+                             5 1)<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;(<a href="#vector-unfold">vector-unfold</a>
-                             (&lambda; (i x) (values x (- x 1)))
+                             (λ (i x) (values x (- x 1)))
                              5 5))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(5 8 9 8 5)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (let ((count 0))
         </code>
-        <br>
+        <br />
         <code class="example-call">
           &nbsp;&nbsp;
-          (vector-map (&lambda; (ignored-index ignored-elt)
+          (vector-map (λ (ignored-index ignored-elt)
         </code>
-        <br>
+        <br />
         <code class="example-call">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           (set! count (+ count 1))
         </code>
-        <br>
+        <br />
         <code class="example-call">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           count)
         </code>
-        <br>
+        <br />
         <code class="example-call">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;
           '#(a b)))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(1 2) <i>OR</i> #(2 1)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-map (&lambda; (i elt) (+ i elt)) '#(1 2 3 4))
+          (vector-map (λ (i elt) (+ i elt)) '#(1 2 3 4))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #(1 3 5 7)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1333,8 +1332,8 @@
         <tt><a href="#vector-ref">vector-ref</a></tt> or
         <tt><a href="#vector-set-bang">vector-set!</a></tt> to
         <tt><i>vec<sub>1</sub></i></tt> in <tt><i>f</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1354,31 +1353,31 @@
         <tt><a href="#vector-map">vector-map</a></tt>, <tt><i>f</i></tt>
         is reliably applied to each subsequent elements, starting at
         index 0, in the vectors.
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-for-each (&lambda; (i x) (display x) (newline))
+          (vector-for-each (λ (i x) (display x) (newline))
         </code>
-        <br>
+        <br />
         <code class="example-call">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           '#("foo" "bar" "baz" "quux" "zot"))
         </code>
-        <br>
+        <br />
         Displays:
-        <br>
+        <br />
         <pre>
 foo
 bar
 baz
 quux
 zot</pre>        
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1395,31 +1394,31 @@ zot</pre>
         &mdash; where <tt><i>length</i></tt> is the length of the
         smallest vector argument &mdash;, to <tt><i>i</i></tt> and each
         parallel element in the vectors at that index, in order.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-count (&lambda; (i elt) (even? elt))
+          (vector-count (λ (i elt) (even? elt))
                         '#(3 1 4 1 5 9 2 5 6))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           3
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
-          (vector-count (&lambda; (i x y) (&lt; x y))
+          (vector-count (λ (i x y) (&lt; x y))
                         '#(1 3 6 9) '#(2 4 6 8 10 12))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           2
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -1438,38 +1437,38 @@ zot</pre>
         &middot;&middot;&middot;</i></tt> that satisfy
         <tt><i>pred?</i></tt>.  If no matching element is found by the
         end of the shortest vector, <tt>#f</tt> is returned.
-        <br>
-        <br>
+        <br />
+        <br />
         Examples:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-index even? '#(3 1 4 1 5 9))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           2
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-index &lt; '#(3 1 4 1 5 9 2 5 6) '#(2 7 1 8 2))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           1
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-index = '#(3 1 4 1 5 9 2 5 6) '#(2 7 1 8 2))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           #f
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1483,8 +1482,8 @@ zot</pre>
         Like <tt><a href="#vector-index">vector-index</a></tt>, but it
         searches right-to-left, rather than left-to-right, and all of
         the vectors <i>must</i> have the same length.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1501,34 +1500,34 @@ zot</pre>
         <tt><i>pred?</i></tt>.  If all the values in the vectors
         satisfy <tt><i>pred?</i></tt> until the end of the shortest
         vector, this returns <tt>#f</tt>. This is equivalent to:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="indented">
           (<a href="#vector-index">vector-index</a>
-           (&lambda; (x<sub><i>1</i></sub> x<sub><i>2</i></sub>
+           (λ (x<sub><i>1</i></sub> x<sub><i>2</i></sub>
                       <i>&middot;&middot;&middot;</i>)
              (not (<i>pred?</i> x<sub><i>1</i></sub>
                                 x<sub><i>1</i></sub>
                                 <i>&middot;&middot;&middot;</i>)))
-           <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <i>vec<sub>1</sub> vec<sub>2</sub>
            &middot;&middot;&middot;</i>)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
         Example:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="example-call">
           (vector-skip number? '#(1 2 a b 3 4 c d))
         </code>
-        <br>
+        <br />
         <code class="example-value">
           2
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1543,23 +1542,23 @@ zot</pre>
         searches for a non-matching element right-to-left, rather than
         left-to-right, and all of the vectors <i>must</i> have the same
         length.  This is equivalent to:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="indented">
           (<a href="#vector-index">vector-index-right</a>
-           (&lambda; (x<sub><i>1</i></sub> x<sub><i>2</i></sub>
+           (λ (x<sub><i>1</i></sub> x<sub><i>2</i></sub>
                       <i>&middot;&middot;&middot;</i>)
              (not (<i>pred?</i> x<sub><i>1</i></sub>
                                 x<sub><i>1</i></sub>
                                 <i>&middot;&middot;&middot;</i>)))
-           <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;
            <i>vec<sub>1</sub> vec<sub>2</sub>
            &middot;&middot;&middot;</i>)
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1580,31 +1579,31 @@ zot</pre>
         integer, which indicates that the first argument is greater
         than the second argument.  An example <tt><i>cmp</i></tt> might
         be:
-        <br>
-        <br>
+        <br />
+        <br />
         <code class="indented">
-          (&lambda; (<i>char<sub>1</sub></i> <i>char<sub>2</sub></i>)
+          (λ (<i>char<sub>1</sub></i> <i>char<sub>2</sub></i>)
         </code>
-        <br>
+        <br />
         <code class="indented">
           &nbsp;&nbsp;(cond ((char&lt;? <i>char<sub>1</sub>
                                            char<sub>2</sub></i>)
                              -1)
         </code>
-        <br>
+        <br />
         <code class="indented">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           ((char=? <i>char<sub>1</sub>
                       char<sub>2</sub></i>)
            0)
         </code>
-        <br>
+        <br />
         <code class="indented">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           (else 1)))
         </code>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1622,8 +1621,8 @@ zot</pre>
         set of elements exists, <tt>vector-any</tt> returns the value
         that <tt><i>pred?</i></tt> returned for that set of elements.
         The iteration is strictly left-to-right.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1645,8 +1644,8 @@ zot</pre>
         the value that <tt><i>pred?</i></tt> returned for the last
         set of elements, at the last index of the shortest vector.  The
         iteration is strictly left-to-right.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -1661,8 +1660,8 @@ zot</pre>
       <dd>
         [<a href="#R5RS"><i>R5RS</i></a>] Assigns the contents of the location at <tt><i>i</i></tt> in
         <tt><i>vec</i></tt> to <tt><i>value</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1675,8 +1674,8 @@ zot</pre>
         Swaps or exchanges the values of the locations in
         <tt><i>vec</i></tt> at <tt><i>i</i></tt> &amp;
         <tt><i>j</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1690,8 +1689,8 @@ zot</pre>
         between <tt><i>start</i></tt>, which defaults to <tt>0</tt> and
         <tt><i>end</i></tt>, which defaults to the length of
         <tt><i>vec</i></tt>, to <tt><i>fill</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1706,8 +1705,8 @@ zot</pre>
         and <tt><i>end</i></tt>.  <tt><i>Start</i></tt> defaults to
         <tt>0</tt> and <tt><i>end</i></tt> defaults to the length of
         <tt><i>vec</i></tt>.  Note that this does not deeply reverse.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1728,8 +1727,8 @@ zot</pre>
         <i>sstart</i>)</tt>.  <tt><i>Sstart</i></tt> defaults to
         <tt>0</tt> and <tt><i>send</i></tt> defaults to the length of
         <tt><i>source</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1753,8 +1752,8 @@ zot</pre>
            <i>send</i>)
         </tt>
         would.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -1771,8 +1770,8 @@ zot</pre>
         between <tt><i>start</i></tt>, which defaults to <tt>0</tt>,
         and <tt><i>end</i></tt>, which defaults to the length of
         <tt><i>vec</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1786,8 +1785,8 @@ zot</pre>
         Like <tt><a href="#vector-to-list">vector-&gt;list</a></tt>,
         but the resulting list contains the elements in reverse between
         the the specified range.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1797,8 +1796,8 @@ zot</pre>
       </dt>
       <dd>
         [<a href="#R5RS"><i>R5RS</i></a>+] Creates a vector of elements from <tt><i>proper-list</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="proc-spec">
@@ -1810,8 +1809,8 @@ zot</pre>
         Like <tt><a href="#list-to-vector">list-&gt;vector</a></tt>,
         but the resulting list contains the elements in reverse of
         <tt><i>proper-list</i></tt>.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
     </dl>
 
@@ -1822,12 +1821,12 @@ zot</pre>
       With this SRFI comes a complete reference implementation.  It is
       licensed under a very open copyright with which no implementors
       should have any legal issues.
-      <br>
-      <br>
+      <br />
+      <br />
       The reference implementation has only one non-R5RS dependency:
       <a href="#SRFI-23">SRFI 23</a>'s <tt>error</tt> procedure.
-      <br>
-      <br>
+      <br />
+      <br />
       This reference implementation of all the procedures described in
       this SRFI can be found <a href="vector-lib.scm">here</a>.
     </p>
@@ -1857,89 +1856,89 @@ zot</pre>
       <dt class="ref"><a name="R5RS">R5RS</a></dt>
       <dd>
         <i>R5RS: The Revised<sup>5</sup> Report on Scheme</i>
-        <br>
+        <br />
         R. Kelsey, W. Clinger, J. Rees (editors).
-        <br>
+        <br />
         Higher-Order and Symbolic Computation, Vol. 11, No. 1,
         September, 1998
-        <br>
+        <br />
         and
-        <br>
+        <br />
         ACM SIGPLAN Notices, Vol. 33, No. 9, October, 1998
-        <br>
+        <br />
         Available at:
         <a href="http://www.schemers.org/Documents/Standards/R5RS/">
           http://www.schemers.org/Documents/Standards/R5RS/
         </a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="ref"><a name="SRFI">SRFI</a></dt>
       <dd>
         <i>SRFI: Scheme Request for Implementation</i>
-        <br>
+        <br />
         The SRFI website can be found at:
         <a href="https://srfi.schemers.org/">
           https://srfi.schemers.org/
         </a>
-        <br>
+        <br />
         The SRFIs mentioned in this document are described later.
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="ref"><a name="SRFI-1">SRFI 1</a></dt>
       <dd>
         <i>SRFI 1: List Library</i>
-        <br>
+        <br />
         A SRFI of list processing procedures, written by Olin Shivers.
-        <br>
+        <br />
         Available at:
         <a href="https://srfi.schemers.org/srfi-1/">
           https://srfi.schemers.org/srfi-1/
         </a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="ref"><a name="SRFI-13">SRFI 13</a></dt>
       <dd>
         <i>SRFI 13: String Library</i>
-        <br>
+        <br />
         A SRFI of string processing procedures, written by Olin
         Shivers.
-        <br>
+        <br />
         Available at:
         <a href="https://srfi.schemers.org/srfi-13/">
           https://srfi.schemers.org/srfi-13/
         </a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="ref"><a name="SRFI-23">SRFI 23</a></dt>
       <dd>
         <i>SRFI 23: Error Reporting Mechanism</i>
-        <br>
+        <br />
         A SRFI that defines a new primitive (<tt>error</tt>) for
         reporting that an error occurred, written by Stephan Houben.
-        <br>
+        <br />
         Available at:
         <a href="https://srfi.schemers.org/srfi-23/">
           https://srfi.schemers.org/srfi-23/
         </a>
-        <br>
-        <br>
+        <br />
+        <br />
       </dd>
 
       <dt class="ref"><a name="SRFI-32">SRFI 32</a></dt>
       <dd>
         <i>SRFI 32: Sort Libraries (draft)</i>
-        <br>
+        <br />
         A SRFI of list and vector sorting routines, written by Olin
         Shivers.
-        <br>
+        <br />
         Available at:
         <a href="https://srfi.schemers.org/srfi-32/">
           https://srfi.schemers.org/srfi-32/
@@ -1975,7 +1974,7 @@ zot</pre>
       FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
       OTHER DEALINGS IN THE SOFTWARE.
     </p>
-    <hr>
+    <hr />
     <address>Editor: <a href="mailto:srfi minus editors at srfi dot schemers dot org">Mike Sperber</a></address>
   </body>
 </html>
